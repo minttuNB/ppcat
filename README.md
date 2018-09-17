@@ -3,7 +3,7 @@ Bongo cat stream overlay for OBS.
 Supports both mouse and tablet.
 
 ## config.json
-The configuration file (generated on start-up) contains 5 options:
+The configuration file (generated on start-up, located in the same folder as the .exe) contains 5 options:
 ```json
 {
   "resX": 1680,
