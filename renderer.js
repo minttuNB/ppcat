@@ -105,7 +105,7 @@ ioHook.on("keydown", event => {
 ioHook.on("keyup", event => {
 	ctx.drawImage(leftup, 600, 320);
 });
-ioHook.on("mousemove", event => {
+function moveCursor(event){
 	if(event.x < 0) event.x = 0;
 	if(event.x > resolution.x || event.x == resolution.x) event.x = resolution.x-1;
 	if(event.y < 0) event.y = 0;
@@ -120,7 +120,9 @@ ioHook.on("mousemove", event => {
 		pen.src = `images/${images[field]}.png`;
 		ctx.drawImage(pen, 256,(261-21));
 	}
-});
+}
+ioHook.on("mousemove", event => moveCursor(event));
+ioHook.on("mousedrag", event => moveCursor(event));
 ioHook.start();
 
 //600,320 left hand
