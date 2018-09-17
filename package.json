@@ -1,0 +1,40 @@
+{
+  "name": "ppcat",
+  "version": "1.0.0",
+  "description": "Real-time ppcat for osu!",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "url": "https://github.com/minttuNB/ppcat",
+    "type": "git"
+  },
+  "keywords": [
+    "ppcat",
+    "bongo",
+    "osu"
+  ],
+  "author": "minttu",
+  "license": "ISC",
+  "iohook": {
+    "targets": [
+      "electron-57"
+    ],
+    "platforms": [
+      "win32",
+      "darwin"
+    ],
+    "arches": [
+      "x64",
+      "ia32"
+    ]
+  },
+  "dependencies": {
+    "iohook": "^0.2.0"
+  },
+  "devDependencies": {
+	"electron": "^2.0.0",
+    "electron-rebuild": "^1.8.2"
+  }
+}
