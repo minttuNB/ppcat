@@ -6,7 +6,10 @@ let config = {
 	"resY": 900,
 	"mouse": false,
 	"keyLeft": 90, 
-	"keyRight": 88
+	"keyRight": 88,
+	"letterboxing": false,
+	"lbResX": 1280,
+	"lbResY": 960
 };
 let wasThereConfig = true;
 try {
