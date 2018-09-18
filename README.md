@@ -23,7 +23,7 @@ The configuration file (generated on start-up, located in the same folder as the
 `resY` - your screen resolution height  
 `mouse` - `true` uses mouse sprites, `false` uses tablet sprites  
 `keyLeft` - your Left Click button in osu!. Z by default  
-`keyRight` - your Right Click button in osu!. X by default
+`keyRight` - your Right Click button in osu!. X by default  
 `letterboxing` - whether to use a letterbox resolution  
 `lbResX` - your letterbox resolution width  
 `lbResY` - your letterbox resolution height
