@@ -24,7 +24,7 @@ const electron = require('electron');
 const { app, BrowserWindow } = electron;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
 
 function createWindow() {
 	if(wasThereConfig === false){
@@ -40,7 +40,16 @@ function createWindow() {
 		mainWindow = null
 	});
 }
-
+let isSecondInstance = app.makeSingleInstance(function(commandLine, workingDirectory){
+	if(mainWindow){
+		if(mainWindow.isMinimized()) mainWindow.restore();
+		mainWindow.focus();
+	}
+})
+if(isSecondInstance){
+	app.quit();
+	return;
+}
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
