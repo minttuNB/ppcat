@@ -3,7 +3,7 @@ Bongo cat stream overlay for OBS.
 Supports both mouse and tablet.
 
 ## IMPORTANT
-Set the Compatibility setting to "Windows 8" if you're on Windows 10 in order to avoid bugs like a white screen.
+Set the Compatibility setting to "Windows 8" if you're on Windows 10 in order to avoid bugs like white screen or black screen in OBS.
 
 ## config.json
 The configuration file (generated on start-up, located in the same folder as the .exe) contains 8 options:
