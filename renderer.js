@@ -37,7 +37,7 @@ if(config.mode === "osu") mode = config.modes.osu.mouse;
 function start(){
 	let image = new Image();
 	if(config.mode === "osu"){
-		image.src = config.modes.osumouse ? "images/devices_mouse.png" : "images/devices.png"
+		image.src = config.modes.osu.mouse ? "images/devices_mouse.png" : "images/devices.png"
 	}
 	else if(config.mode === "taiko") image.src = `images/devices_${mode}.png`;
 	else throw new Error("Unknown gamemode setting! Currently supported modes: osu, taiko");
