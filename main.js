@@ -3,13 +3,24 @@ const path = require("path");
 let config = {
 	"resX": 1600,
 	"resY": 900,
-	"mouse": false,
-	"keyLeft": 90, 
-	"keyRight": 88,
 	"letterboxing": false,
 	"lbResX": 1280,
-	"lbResY": 960
-};
+	"lbResY": 960,
+	"mode": "osu",
+	"modes":{
+		"osu":{
+			"keyLeft": 90,
+			"keyRight": 88,
+			"mouse": false
+		},
+		"taiko":{
+			"keyLeftBlue": 68,
+			"keyLeftRed": 70,
+			"keyRightRed": 74,
+			"keyRightBlue": 75
+		}
+	}
+}
 let wasThereConfig = true;
 try {
 	config = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "config.json"), "utf8"));
@@ -38,7 +49,7 @@ function createWindow() {
 	mainWindow = new BrowserWindow({ resizable: false, width: 1200, height: 800, title: `ppcat` });
 	mainWindow.loadFile('index.html');
 	mainWindow.setMenu(null);
-	mainWindow.on('closed', function () {
+	mainWindow.on('closed', function() {
 		mainWindow = null
 	});
 }
