@@ -14,10 +14,10 @@ let config = {
 			"mouse": false
 		},
 		"taiko":{
-			"keyLeftBlue": 68,
-			"keyLeftRed": 70,
-			"keyRightRed": 74,
-			"keyRightBlue": 75
+			"keyLeftBlue": 90,
+      		"keyLeftRed": 88,
+      		"keyRightRed": 67,
+      		"keyRightBlue": 86
 		}
 	}
 }
