@@ -27,7 +27,7 @@ try {
 } catch (err) {
 	if(err){
 		if (err.code === "ENOENT") {
-			fs.writeFileSync("config.json", JSON.stringify(config), "utf8");
+			fs.writeFileSync("config.json", JSON.stringify(config, 0, 4), "utf8");
 			wasThereConfig = false;
 		}
 	}
@@ -44,7 +44,7 @@ function createWindow() {
 		const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize;
 		config.resX = width;
 		config.resY = height + 40;
-		fs.writeFileSync(path.join(__dirname, "..", "..", "config.json"), JSON.stringify(config), "utf8");
+		fs.writeFileSync(path.join(__dirname, "..", "..", "config.json"), JSON.stringify(config, 0, 4), "utf8");
 	}
 	mainWindow = new BrowserWindow({ resizable: false, width: 1200, height: 800, title: `ppcat` });
 	mainWindow.loadFile('index.html');
