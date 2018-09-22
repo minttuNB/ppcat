@@ -4,7 +4,7 @@ Supports both mouse and tablet.
 
 ## IMPORTANT
 Set the Compatibility setting to "Windows 8" if you're on Windows 10 in order to avoid bugs like white screen or black screen in OBS.  
-This is no longer needed in version v1.2.0 and up.
+**This is no longer needed in version v1.2.0 and up.**
 
 ## config.json
 The configuration file (generated on start-up, located in the same folder as the .exe) contains a variety of options:
