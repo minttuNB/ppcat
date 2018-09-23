@@ -48,5 +48,5 @@ The configuration file (generated on start-up, located in the same folder as the
   * `modes.taiko.keyLeftBlue` - left outer drum key. Z by default
   * `modes.taiko.keyLeftRed` - left inner drum key. X by default
   * `modes.taiko.keyRightRed` - right inner drum key. C by default
-  * `modes.taiko.keyRightBlue` - right outer drum key. V by default
+  * `modes.taiko.keyRightBlue` - right outer drum key. V by default  
 Please use a tool such as http://keycode.info/ to find keycodes for your own keys.
