@@ -83,20 +83,20 @@ if(config.mode === "osu"){
 	let leftup = new Image();
 	leftup.src = "images/left_up.png"
 	ioHook.on("keydown", event => {
-		if(event.rawcode == config.modes.osu.keyLeft){
+		if(config.modes.osu.keysLeft.includes(event.rawcode)){
 			ctx.drawImage(pressLeft, 600, 320);
 			keysDown.left = true;
 		}
-		else if(event.rawcode == config.modes.osu.keyRight){
+		else if(config.modes.osu.keysRight.includes(event.rawcode)){
 			ctx.drawImage(pressRight, 600, 320);
 			keysDown.right = true;
 		}
 	});
 	ioHook.on("keyup", event => {
-		if(event.rawcode == config.modes.osu.keyLeft){
+		if(config.modes.osu.keysLeft.includes(event.rawcode)){
 			keysDown.left = false;
 		}
-		if(event.rawcode == config.modes.osu.keyRight){
+		if(config.modes.osu.keysRight.includes(event.rawcode)){
 			keysDown.right = false;
 		}
 		if(!keysDown.left && !keysDown.right){

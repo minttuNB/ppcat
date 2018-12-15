@@ -9,8 +9,8 @@ let config = {
 	"mode": "osu",
 	"modes":{
 		"osu":{
-			"keyLeft": 90,
-			"keyRight": 88,
+			"keysLeft": [90, 86],
+			"keysRight": [88, 66],
 			"mouse": false
 		},
 		"taiko":{
