@@ -36,7 +36,10 @@ The configuration file (generated on start-up, located in the same folder as the
 * `letterboxing` - whether to use a letterbox resolution  
 * `lbResX` - your letterbox resolution width  
 * `lbResY` - your letterbox resolution height  
-* `mode` - your preferred gamemode (`osu` or `taiko` supported at the moment)  
+* `mode` - your preferred gamemode
+  * `osu` for OSU-related key presses
+  * `taiko` for taiko-related key presses
+  * `keyboard` for any key press
 * `modes` - contains mode-specific settings:  
 
 **osu!std specific**:  
