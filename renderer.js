@@ -178,6 +178,14 @@ else if(config.mode === "taiko"){
 
 		if(keysArr.length == 0){
 			ctx.drawImage(leftup, 600, 320);
+		} else {
+			if (keyFlip) {
+				ctx.drawImage(pressLeft, 600, 320);
+			} else {
+				ctx.drawImage(pressRight, 600, 320);
+			}
+	
+			keyFlip = !keyFlip;
 		}
 	});
 }
