@@ -139,6 +139,37 @@ else if(config.mode === "taiko"){
 			ctx.drawImage(rightuptaiko, 332,279);
 		}
 	});
+} else if (config.mode == "keyboard") {
+	let pressLeft = new Image();
+	pressLeft.src = "images/button_left_press.png"
+	let pressRight = new Image();
+	pressRight.src = "images/button_right_press.png"
+	let leftup = new Image();
+	leftup.src = "images/left_up.png"
+	ioHook.on("keydown", event => {
+		if (keysArr.indexOf(event.rawcode) > -1) return;
+
+		keysArr.push(event.rawcode);
+
+		if (keyFlip) {
+			ctx.drawImage(pressLeft, 600, 320);
+		} else {
+			ctx.drawImage(pressRight, 600, 320);
+		}
+
+		keyFlip = !keyFlip;
+	});
+	ioHook.on("keyup", event => {
+		const index = keysArr.indexOf(event.rawcode);
+
+		if (index > -1) {
+			keysArr.splice(index, 1);
+		}
+
+		if(keysArr.length == 0){
+			ctx.drawImage(leftup, 600, 320);
+		}
+	});
 }
 function moveCursor(event){
 	if(config.mode === "osu"){
