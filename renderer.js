@@ -75,6 +75,8 @@ let keysDown = {
 	left: false,
 	right: false
 };
+let keysArr = []; // for tracking key presses in keyboard mode
+let keyFlip = true; // for flipping between left/right states in keyboard mode
 if(config.mode === "osu"){
 	let pressLeft = new Image();
 	pressLeft.src = "images/button_left_press.png"
