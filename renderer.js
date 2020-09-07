@@ -8,6 +8,12 @@ const letterbox = {
 	x: config.lbResX || 0,
 	y: config.lbResY || 0
 }
+let mode = config.mode;
+if(config.mode === "osu") {
+	mode = config.modes.osu.mouse;
+} else if (config.mode === "keyboard") {
+	mode = config.modes.keyboard.mouse;
+}
 let device = (function(device){
 		switch(device){
 			case true:
@@ -17,7 +23,7 @@ let device = (function(device){
 			default:
 				return `pen`;
 		}
-})(config.modes.osu.mouse);
+})(mode);
 const images = [
 	`${device}_left_top`, `${device}_middle_top`, `${device}_right_top`,
 	`${device}_left_middle`, `${device}_middle`, `${device}_right_middle`,
@@ -32,15 +38,17 @@ base.src = "images/base.png";
 base.onload = () => {
 	ctx.drawImage(base, 0, 0);
 };
-let mode = config.mode;
-if(config.mode === "osu") mode = config.modes.osu.mouse;
 function start(){
 	let image = new Image();
 	if(config.mode === "osu"){
-		image.src = config.modes.osu.mouse ? "images/devices_mouse.png" : "images/devices.png"
+		image.src = config.modes.osu.mouse ? "images/devices_mouse.png" : "images/devices.png";
 	}
-	else if(config.mode === "taiko") image.src = `images/devices_${mode}.png`;
-	else throw new Error("Unknown gamemode setting! Currently supported modes: osu, taiko");
+	else if(config.mode === "taiko") {
+		image.src = `images/devices_${mode}.png`;
+	} else if (config.mode === "keyboard") {
+		image.src = config.modes.keyboard.mouse ? "images/devices_mouse.png" : "images/devices.png";
+	}
+	else throw new Error("Unknown gamemode setting! Currently supported modes: osu, taiko, and keyboard");
 	let fix = new Image();
 	fix.src = "images/base_partial.png";
 	let baseY = 342;
@@ -75,6 +83,8 @@ let keysDown = {
 	left: false,
 	right: false
 };
+let keysArr = []; // for tracking key presses in keyboard mode
+let keyFlip = true; // for flipping between left/right states in keyboard mode
 if(config.mode === "osu"){
 	let pressLeft = new Image();
 	pressLeft.src = "images/button_left_press.png"
@@ -139,9 +149,48 @@ else if(config.mode === "taiko"){
 			ctx.drawImage(rightuptaiko, 332,279);
 		}
 	});
+} else if (config.mode == "keyboard") {
+	let pressLeft = new Image();
+	pressLeft.src = "images/button_left_press.png"
+	let pressRight = new Image();
+	pressRight.src = "images/button_right_press.png"
+	let leftup = new Image();
+	leftup.src = "images/left_up.png"
+	ioHook.on("keydown", event => {
+		if (keysArr.indexOf(event.rawcode) > -1) return;
+
+		keysArr.push(event.rawcode);
+
+		if (keyFlip) {
+			ctx.drawImage(pressLeft, 600, 320);
+		} else {
+			ctx.drawImage(pressRight, 600, 320);
+		}
+
+		keyFlip = !keyFlip;
+	});
+	ioHook.on("keyup", event => {
+		const index = keysArr.indexOf(event.rawcode);
+
+		if (index > -1) {
+			keysArr.splice(index, 1);
+		}
+
+		if(keysArr.length == 0){
+			ctx.drawImage(leftup, 600, 320);
+		} else {
+			if (keyFlip) {
+				ctx.drawImage(pressLeft, 600, 320);
+			} else {
+				ctx.drawImage(pressRight, 600, 320);
+			}
+	
+			keyFlip = !keyFlip;
+		}
+	});
 }
 function moveCursor(event){
-	if(config.mode === "osu"){
+	if(config.mode === "osu" || config.mode === "keyboard"){
 		let x, y;
 		if(config.letterboxing){
 			let offsetX = ( resolution.x - letterbox.x ) / 2;

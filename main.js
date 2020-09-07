@@ -18,6 +18,9 @@ let config = {
       		"keyLeftRed": 88,
       		"keyRightRed": 67,
       		"keyRightBlue": 86
+		},
+		"keyboard":{
+			"mouse": true
 		}
 	}
 }
